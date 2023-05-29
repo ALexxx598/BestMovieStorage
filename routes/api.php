@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\MediaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::controller(MediaController::class)
+    ->prefix('media-uploader')
+    ->group(function () {
+
+        Route::middleware('access_token')->group(function () {
+            Route::post('/', 'upload');
+        });
+
+        // TODO add microservices url check
+        Route::get('/', 'getPath');
+        Route::get('/validate', 'validatePath');
+    });

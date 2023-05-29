@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\StorageDomain\Media\RestrictionFactory\MediaRestrictionFactory;
+use App\StorageDomain\Media\RestrictionFactory\MediaRestrictionFactoryInterface;
 use App\StorageDomain\Media\Service\FirebaseMediaService;
 use App\StorageDomain\Media\Service\MediaServiceInterface;
 use App\StorageDomain\Media\Storage\FirebaseMediaStorage;
@@ -15,9 +17,11 @@ class MediaServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->registerMediaService();
+        $this->registerMediaRestrictionFactory();
 
         $this->registerMediaStorage();
+
+        $this->registerMediaService();
     }
 
     private function registerMediaService(): void
@@ -28,5 +32,10 @@ class MediaServiceProvider extends ServiceProvider
     private function registerMediaStorage(): void
     {
         $this->app->singleton(MediaStorageInterface::class, FirebaseMediaStorage::class);
+    }
+
+    private function registerMediaRestrictionFactory()
+    {
+        $this->app->singleton(MediaRestrictionFactoryInterface::class, MediaRestrictionFactory::class);
     }
 }

@@ -21,28 +21,21 @@ class FirebaseMediaService implements MediaServiceInterface
         private MediaRestrictionFactoryInterface $mediaRestrictionFactory,
         private MediaStorageInterface $mediaStorage
     ) {
-
     }
 
     /**
-     * @throws UnsupportedMediaType
-     * @throws Exception
+     * @inheritdoc
      */
     public function upload(MediaUploadPayload $payload): MediaSavedPayload
     {
-        //TODO validate user permissions
-
         $this->mediaRestrictionFactory
             ->make($payload->getType())
             ->validate($payload->getFile());
 
         $folderPath = $this->definePath($payload->getType());
+        $name = $this->generateName($payload->getFile()->getClientOriginalExtension());
 
-        $path = $this->mediaStorage->uploadFile(
-            $folderPath,
-            $payload->getFile(),
-            $this->generateName($payload->getFile()->getClientOriginalExtension())
-        );
+        $path = $this->mediaStorage->uploadFile($folderPath, $payload->getFile(), $name);
 
         return MediaSavedPayload::make($payload->getType(), $path);
     }
@@ -52,7 +45,7 @@ class FirebaseMediaService implements MediaServiceInterface
      */
     public function getFileUrl(string $path): string
     {
-        return urldecode($this->mediaStorage->getFileUrl($path));
+        return $this->mediaStorage->getFileUrl($path);
     }
 
     /**
@@ -83,5 +76,13 @@ class FirebaseMediaService implements MediaServiceInterface
             bin2hex(random_bytes(4)),
             $fileExtension
         );
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function validatePath(string $path): bool
+    {
+        return $this->mediaStorage->isPathValid($path);
     }
 }

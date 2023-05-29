@@ -10,6 +10,7 @@ trait AuthMiddlewareTrait
     /**
      * @param Request $request
      * @return string
+     * @throws AccessDeniedException
      */
     public function checkAuthToken(Request $request): string
     {

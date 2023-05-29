@@ -17,7 +17,7 @@ class MediaUploadResource extends MovieStorageResource
     {
         return [
             'url' => $this->getUrl(),
-            'media_type' => $this->getType()->value(),
+            'media_type' => $this->getMediaType(),
         ];
     }
 }

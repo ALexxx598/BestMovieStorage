@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b08793bb10bad17b09a1030ff3509d87",
+    "content-hash": "d622e5e4974ab584d4a14ff6849646a3",
     "packages": [
         {
             "name": "beste/clock",
@@ -126,16 +126,16 @@
         },
         {
             "name": "bestmovie/common",
-            "version": "v0.0.18",
+            "version": "v0.0.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ALexxx598/BestMovieCommon.git",
-                "reference": "6e018bf3b33244b0b22ae6be0f9b1d32e066dfe3"
+                "reference": "d5b8b544c10eb2e93dd5603cf75f6ab8de6b8cb8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ALexxx598/BestMovieCommon/zipball/6e018bf3b33244b0b22ae6be0f9b1d32e066dfe3",
-                "reference": "6e018bf3b33244b0b22ae6be0f9b1d32e066dfe3",
+                "url": "https://api.github.com/repos/ALexxx598/BestMovieCommon/zipball/d5b8b544c10eb2e93dd5603cf75f6ab8de6b8cb8",
+                "reference": "d5b8b544c10eb2e93dd5603cf75f6ab8de6b8cb8",
                 "shasum": ""
             },
             "require": {
@@ -153,7 +153,8 @@
             "extra": {
                 "laravel": {
                     "providers": [
-                        "BestMovie\\Common\\EmailTemplateServiceProvider"
+                        "BestMovie\\Common\\EmailTemplateServiceProvider",
+                        "BestMovie\\Common\\BestMovieServiceProvider"
                     ]
                 }
             },
@@ -175,9 +176,9 @@
             "description": "public contracts for best movie microservices app",
             "support": {
                 "issues": "https://github.com/ALexxx598/BestMovieCommon/issues",
-                "source": "https://github.com/ALexxx598/BestMovieCommon/tree/v0.0.18"
+                "source": "https://github.com/ALexxx598/BestMovieCommon/tree/v0.0.20"
             },
-            "time": "2023-02-22T14:57:26+00:00"
+            "time": "2023-02-24T14:15:50+00:00"
         },
         {
             "name": "brick/math",

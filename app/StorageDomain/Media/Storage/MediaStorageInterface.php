@@ -19,4 +19,10 @@ interface MediaStorageInterface
      * @return string
      */
     public function getFileUrl(string $path): string;
+
+    /**
+     * @param string $path
+     * @return bool
+     */
+    public function isPathValid(string $path): bool;
 }
